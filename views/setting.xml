@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settings_generate_product_barcode_number_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.stock.barcode</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="stock.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@data-key='stock']/div[hasclass('o_settings_container')][1]" position="after">
+                <h2>Generacion de codigo e barras</h2>
+                <div class="row mt16 o_settings_container">
+                    <div id="label_configuration1" class="o_setting_box">
+                        <div>
+                            <span class="o_form_label">Prefijo de 2 digitos e codigo e barras de producto</span>
+                            <div class="text-muted">
+                                <p>Ingrese el prefijo de 2 digitos para el codigo de barras</p>
+                                <field name="barcode_prefix"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

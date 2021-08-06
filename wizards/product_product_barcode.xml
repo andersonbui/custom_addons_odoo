@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_generator_product_product_barcode" model="ir.ui.view">
+        <field name="name">Generador de Codigo de barra</field>
+        <field name="model">dynamic.product.product.barcode.number</field>
+        <field name="arch" type="xml">
+            <form string="Generacion de Codigo de barras">
+                <sheet>
+                    <span class="o_form_label" style="font-weight:bold;">Realmente desea generar el codigo de barras para este producto?</span>
+                </sheet>
+                <footer>
+                    <button name="dynamic_product_barcode" string="Generate" type="object" class="btn-primary"/>
+                    O
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="action_dynamic_product_product_barcode_number"
+                name="Generar codigo de barras"
+                res_model="dynamic.product.product.barcode.number"
+                binding_model="product.product"
+                view_mode="form"
+                target="new"
+                context="{'search_default_product_product_id': [active_id]}"
+            />
+
+
+</odoo>
