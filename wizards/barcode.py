@@ -29,10 +29,16 @@ def generate_ean(self, ean):
         return "0000000000000"
     ean = re.sub("[A-Za-z]", "0", ean)
     ean = re.sub("[^0-9]", "", ean)
-    ean = ean[:13]
+    ean = ean[:10] # max 10 digit, plus the fefix (2 digits) and a check digit (1), for a total of 13 digits
     # prefix
     prefix = self.env['ir.config_parameter'].sudo().get_param('km_dynamic_product_barcode_number.barcode_prefix')
-    if prefix == False:
+    prefix = re.sub("[^0-9]", "", prefix)
+    prefix = prefix[:2]
+
+    if(len(prefix) == 1):
+      prefix = prefix + '1'
+    
+    if prefix == False or len(prefix) == 0 :
         prefix = "10"
 
     if len(ean) < 13:
