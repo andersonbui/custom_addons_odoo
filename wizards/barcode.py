@@ -31,7 +31,7 @@ def generate_ean(self, ean):
     ean = re.sub("[^0-9]", "", ean)
     ean = ean[:10] # max 10 digit, plus the fefix (2 digits) and a check digit (1), for a total of 13 digits
     # prefix
-    prefix = self.env['ir.config_parameter'].sudo().get_param('km_dynamic_product_barcode_number.barcode_prefix')
+    prefix = self.env['ir.config_parameter'].sudo().get_param('product_barcode_generator_odoo.barcode_prefix')
     prefix = re.sub("[^0-9]", "", prefix)
     prefix = prefix[:2]
 
