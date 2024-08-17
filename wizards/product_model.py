@@ -30,9 +30,10 @@ class ProductAutoBarcode(models.Model):
     @api.model
     def create(self, vals):
         res = super(ProductAutoBarcode, self).create(vals)
-        ean = barcode.generate_ean(self, str(res.id))
-        res.barcode = ean
-        print("res.barcode",res.barcode)
+        if(not res.barcode or res.barcode == ""):
+            ean = barcode.generate_ean(self, str(res.id))
+            res.barcode = ean
+        print("PRODUCT barcode",res.barcode)
         return res
 
 
@@ -44,7 +45,7 @@ class ProductTemplateAutoBarcode(models.Model):
         templates = super(ProductTemplateAutoBarcode, self).create(vals_list)
         #ean = templates.product_variant_id.barcode
         #templates.barcode = ean
-        print("TEMPLATES BARCODE: ",templates.barcode)
+        print("TEMPLATES barcode: ",templates.barcode)
 
         return templates
 
