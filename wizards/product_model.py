@@ -28,8 +28,8 @@ class ProductAutoBarcode(models.Model):
     _inherit = 'product.product'
 
     @api.model
-    def create(self, vals):
-        res = super(ProductAutoBarcode, self).create(vals)
+    def create(self, vals_list):
+        res = super(ProductAutoBarcode, self).create(vals_list)
         if(not res.barcode or res.barcode == ""):
             ean = barcode.generate_ean(self, str(res.id))
             res.barcode = ean
@@ -43,10 +43,7 @@ class ProductTemplateAutoBarcode(models.Model):
     @api.model
     def create(self, vals_list):
         templates = super(ProductTemplateAutoBarcode, self).create(vals_list)
-        #ean = templates.product_variant_id.barcode
-        #templates.barcode = ean
-        print("TEMPLATES barcode: ",templates.barcode)
-
+        print("TEMPLATES barcode: ", templates.barcode)
         return templates
 
 
