@@ -11,10 +11,10 @@
                 <div class="row mt16 o_settings_container">
                     <div id="label_configuration1" class="o_setting_box">
                         <div>
-                            <span class="o_form_label">Prefijo de 2 digitos e codigo e barras de producto</span>
+                            <span class="o_form_label">Prefijo de 2 digitos del código de barras del producto</span>
                             <div class="text-muted">
-                                <p>Ingrese el prefijo de 2 digitos para el codigo de barras</p>
-                                <field name="barcode_prefix"/>
+                                <p>Ingrese el prefijo de 2 digitos para el código de barras</p>
+                                <field name="barcode_prefix" default="10"/>
                             </div>
                         </div>
                     </div>
